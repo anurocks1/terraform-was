@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.40.0"  
+      version = ">= 3.40.0"
     }
   }
 }
@@ -12,21 +12,21 @@ provider "aws" {
 }
 
 module "eks" {
-  source = "terraform-aws-modules/eks/aws"
+  source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
 
-  cluster_name = "SEI-Cluster"
+  cluster_name    = "LOCO-Cluster"
   cluster_version = "1.30"
 
-  vpc_id = "vpc-0ab91873"
-  subnet_ids = ["subnet-0a83906c", "subnet-ae0ae8e5", "subnet-92acf0c8"]
+  vpc_id     = "vpc-0fd983a6e4a5c0914"
+  subnet_ids = ["subnet-05ef737633d648c57", "subnet-0498fa56338955b78", "subnet-0fec0228caf297fe9"]
 
   eks_managed_node_groups = {
     default = {
       instance_types = ["t3.medium"]
-      min_size = 1
-      max_size = 2
-      desired_size = 1
+      min_size       = 1
+      max_size       = 2
+      desired_size   = 1
     }
   }
 }
